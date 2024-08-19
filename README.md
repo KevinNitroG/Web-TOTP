@@ -6,6 +6,7 @@
 - Card: https://www.hyperui.dev/components/marketing/cards
 - Form: https://www.hyperui.dev/components/marketing/forms
 - Icon: https://simpleicons.org/
+- Toggle Dark Light System: https://stackblitz.com/edit/vitejs-vite-eh6uak?file=src%2Findex.ts
 - Dark Light: https://dev.to/whitep4nth3r/the-best-lightdark-mode-theme-toggle-in-javascript-368f
 - Toggle theme animation: https://medium.com/@AkashHamirwasia/full-page-theme-toggle-animation-with-view-transitions-api-43db0beed341
 - Toggle theme bruh animation: https://stackoverflow.com/questions/68400074/how-to-apply-transition-effects-when-switching-from-light-mode-to-dark-in-tailwi

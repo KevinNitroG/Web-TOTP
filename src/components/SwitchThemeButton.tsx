@@ -1,11 +1,21 @@
 import { Theme } from '@/config/themes';
 import { useAppDispatch, useAppSelector } from '@/state/hook';
-import { switchTheme } from '@/state/theme/themeSlice';
+import { setTheme, switchTheme } from '@/state/theme/themeSlice';
 import { BoltIcon, MoonIcon, SunIcon } from '@heroicons/react/24/outline';
+import { useEffect } from 'react';
+import { useMediaQuery } from 'usehooks-ts';
 
 function SwitchThemeButton() {
   const theme: Theme = useAppSelector((state) => state.theme.currentTheme);
   const dispatch = useAppDispatch();
+  const isPreferDarkScheme = useMediaQuery('(prefers-color-scheme: dark)');
+
+  /* eslint-disable react-hooks/exhaustive-deps */
+  useEffect(() => {
+    if (theme !== 'system') return;
+    dispatch(setTheme());
+  }, [isPreferDarkScheme]);
+  /* eslint-enable react-hooks/exhaustive-deps */
 
   const iconProps = {
     className:

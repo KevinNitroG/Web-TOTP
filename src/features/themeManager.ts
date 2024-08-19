@@ -16,12 +16,24 @@ function getTheme(): Theme {
   return (localStorage.getItem('theme') as Theme | 'system') || 'system';
 }
 
-function getIsPreffersDarkScheme(): boolean {
+function getIsPrefersDarkScheme(): boolean {
   return window.matchMedia('(prefers-color-scheme: dark)').matches;
 }
 
+// function addListenerPreferDarkScheme(callback: () => void): void {
+//   window
+//     .matchMedia('(prefers-color-scheme: dark)')
+//     .addEventListener('change', () => callback());
+// }
+//
+// function removeListenerPreferDarkScheme(callback: () => void): void {
+//   window
+//     .matchMedia('(prefers-color-scheme: dark)')
+//     .removeEventListener('change', () => callback());
+// }
+
 function getScheme(theme: Theme): Scheme {
-  const isPreffersDarkScheme: boolean = getIsPreffersDarkScheme();
+  const isPreffersDarkScheme: boolean = getIsPrefersDarkScheme();
   if (theme === 'system') {
     return isPreffersDarkScheme ? 'dark' : 'light';
   } else {
@@ -53,4 +65,9 @@ function switchTheme(current: Theme): [Theme, Scheme] {
   return setAndGetTheme();
 }
 
-export { setAndGetTheme, switchTheme };
+export {
+  // addListenerPreferDarkScheme,
+  // removeListenerPreferDarkScheme,
+  setAndGetTheme,
+  switchTheme
+};
