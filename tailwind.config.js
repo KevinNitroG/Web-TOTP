@@ -1,17 +1,27 @@
 /** @type {import('tailwindcss').Config} */
-import catppuccin from '@catppuccin/tailwindcss';
-import withMT from '@material-tailwind/react/utils/withMT';
+import catppuccinDaisyUI from '@catppuccin/daisyui';
+import catppuccinTailwind from '@catppuccin/tailwindcss';
+import daisyui from 'daisyui';
 
-export default withMT({
+export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {},
   },
   plugins: [
-    catppuccin({
+    daisyui,
+    catppuccinTailwind({
       prefix: 'ctp',
       defaultFlavour: 'latte',
     }),
   ],
-  darkMode: 'selector',
-});
+  darkMode: ['selector', '[data-theme="macchiato"]'],
+  daisyui: {
+    logs: false,
+    darkTheme: 'macchiato',
+    themes: [
+      catppuccinDaisyUI('latte', 'lavender'),
+      catppuccinDaisyUI('macchiato', 'lavender'),
+    ],
+  },
+};

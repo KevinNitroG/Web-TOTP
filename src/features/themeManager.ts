@@ -5,10 +5,12 @@ function setTheme(scheme: Scheme) {
     document.documentElement.classList.add('dark');
     document.body.classList.remove(LIGHT_CLASS);
     document.body.classList.add(DARK_CLASS);
+    document.documentElement.setAttribute('data-theme', DARK_CLASS);
   } else {
     document.documentElement.classList.remove('dark');
     document.body.classList.remove(DARK_CLASS);
     document.body.classList.add(LIGHT_CLASS);
+    document.documentElement.setAttribute('data-theme', LIGHT_CLASS);
   }
 }
 
@@ -19,18 +21,6 @@ function getTheme(): Theme {
 function getIsPrefersDarkScheme(): boolean {
   return window.matchMedia('(prefers-color-scheme: dark)').matches;
 }
-
-// function addListenerPreferDarkScheme(callback: () => void): void {
-//   window
-//     .matchMedia('(prefers-color-scheme: dark)')
-//     .addEventListener('change', () => callback());
-// }
-//
-// function removeListenerPreferDarkScheme(callback: () => void): void {
-//   window
-//     .matchMedia('(prefers-color-scheme: dark)')
-//     .removeEventListener('change', () => callback());
-// }
 
 function getScheme(theme: Theme): Scheme {
   const isPreffersDarkScheme: boolean = getIsPrefersDarkScheme();
@@ -65,9 +55,4 @@ function switchTheme(current: Theme): [Theme, Scheme] {
   return setAndGetTheme();
 }
 
-export {
-  // addListenerPreferDarkScheme,
-  // removeListenerPreferDarkScheme,
-  setAndGetTheme,
-  switchTheme
-};
+export { setAndGetTheme, switchTheme };

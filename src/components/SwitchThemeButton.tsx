@@ -1,7 +1,9 @@
 import { Theme } from '@/config/themes';
 import { useAppDispatch, useAppSelector } from '@/state/hook';
 import { setTheme, switchTheme } from '@/state/theme/themeSlice';
-import { BoltIcon, MoonIcon, SunIcon } from '@heroicons/react/24/outline';
+import BrightnessIcon from '@mui/icons-material/Brightness5Outlined';
+import DarkModeIcon from '@mui/icons-material/DarkModeOutlined';
+import LightModeIcon from '@mui/icons-material/LightModeOutlined';
 import { useEffect } from 'react';
 import { useMediaQuery } from 'usehooks-ts';
 
@@ -10,6 +12,8 @@ function SwitchThemeButton() {
   const dispatch = useAppDispatch();
   const isPreferDarkScheme = useMediaQuery('(prefers-color-scheme: dark)');
 
+  const handleOnClick = () => dispatch(switchTheme());
+
   /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     if (theme !== 'system') return;
@@ -17,31 +21,30 @@ function SwitchThemeButton() {
   }, [isPreferDarkScheme]);
   /* eslint-enable react-hooks/exhaustive-deps */
 
-  const iconProps = {
-    className:
-      'text-ctp-surface0 bg-ctp-text dark:text-ctp-text dark:bg-ctp-surface0 w-16 h-16 rounded-full p-2',
-    onClick: () => dispatch(switchTheme()),
-  };
-
-  const renderIcon = (IconComponent: React.ElementType, props: object) => {
-    return <IconComponent {...props} />;
-  };
-
-  let Icon: JSX.Element;
+  let IconComponent: React.ElementType;
 
   switch (theme) {
     case 'light':
-      Icon = renderIcon(SunIcon, iconProps);
+      IconComponent = LightModeIcon;
       break;
     case 'dark':
-      Icon = renderIcon(MoonIcon, iconProps);
+      IconComponent = DarkModeIcon;
       break;
     case 'system':
-      Icon = renderIcon(BoltIcon, iconProps);
+      IconComponent = BrightnessIcon;
       break;
   }
 
-  return <>{Icon}</>;
+  return (
+    <div
+      tabIndex={0}
+      role="button"
+      className="theme-controller btn btn-circle btn-ghost cursor-pointer border-none"
+      onClick={handleOnClick}
+    >
+      <IconComponent />
+    </div>
+  );
 }
 
 export default SwitchThemeButton;

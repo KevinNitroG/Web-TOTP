@@ -1,9 +1,9 @@
-import SwitchThemeButton from '@/components/SwitchThemeButton';
+import Navbar from '@/components/Navbar';
 
 function App() {
   return (
     <>
-      <SwitchThemeButton />
+      <Navbar />
     </>
   );
 }
