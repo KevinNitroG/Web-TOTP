@@ -27,7 +27,6 @@ html {
 
 body {
   /* font-size: 1.6rem; */
-  margin: 0 2rem;
   max-width: 1920px;
 }
 
@@ -35,9 +34,28 @@ body * {
   @apply transition-colors duration-200;
 }
 
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
+
 @media (max-width: 768px) {
   body {
-    margin: 0;
     max-width: unset;
   }
 }

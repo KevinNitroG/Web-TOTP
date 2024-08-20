@@ -1,21 +1,27 @@
-import { EMPTY_AVATAR } from '@/config/avatar';
+import AccountCircleIcon from '@mui/icons-material/AccountCircleOutlined';
 import { memo } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
-  src?: string;
+  src?: string | File | null;
   className?: string;
   alt?: string;
 };
 
-function Avatar({ src = EMPTY_AVATAR, className, alt = '' }: Props) {
+function Avatar({ src = null, className, alt = 'avatar' }: Props) {
   const mergedClass = twMerge('rounded-full', 'avatar', className);
+  let Avatar: React.ReactElement;
 
-  return (
-    <div className={mergedClass}>
-      <img src={src} alt={alt} />
-    </div>
-  );
+  if (src instanceof File) {
+    const fileURL = URL.createObjectURL(src);
+    Avatar = <img src={fileURL} alt={alt} />;
+  } else if (typeof src === 'string') {
+    Avatar = <img src={src} alt={alt} />;
+  } else {
+    Avatar = <AccountCircleIcon />;
+  }
+
+  return <div className={mergedClass}>{Avatar}</div>;
 }
 
 export default memo(Avatar);
