@@ -1,27 +1,47 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 
 import './styles/index.css';
 
-import Error from '@/pages/Error';
-import { Home, Vault } from '@routes/index';
 import store from '@state/store';
+
+import ErrorPage from '@/pages/Error';
+import NormalLayout from '@layouts/Normal';
+import HomePage from '@pages/Home';
+import VaultPage from '@pages/Vault';
+import SigninPage from '@pages/Signin';
+import SignupPage from '@pages/Signup';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
-    errorElement: <Error />,
+    element: <NormalLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: '/',
+        element: <HomePage />,
+      },
+      {
+        path: '/home',
+        element: <HomePage />,
+      },
+      {
+        path: '/vault',
+        element: <VaultPage />,
+      },
+    ],
   },
   {
-    path: '/home',
-    element: <Home />,
+    path: '/signin',
+    element: <SigninPage />,
   },
   {
-    path: '/vault',
-    element: <Vault />,
+    path: '/signup',
+    element: <SignupPage />,
   },
 ]);
 

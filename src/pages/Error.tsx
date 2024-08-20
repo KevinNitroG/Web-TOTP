@@ -6,7 +6,7 @@ function Error() {
 
   return (
     <div className="flex h-screen w-screen items-center justify-center">
-      <div id="error-page" className="card w-96 shadow-xl">
+      <div id="error-page" className="card w-96 shadow-2xl">
         <div className="card-body items-center text-center">
           <h2 className="card-title">Error</h2>
           <p>{error.statusText || error.message} </p>

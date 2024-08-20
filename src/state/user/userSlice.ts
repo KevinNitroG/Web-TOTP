@@ -2,14 +2,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface userState {
   avatar: string | File | null;
-  isLogin: boolean;
+  isSignin: boolean;
   password: string | null;
   username: string | null;
 }
 
 const initialState: userState = {
   avatar: null,
-  isLogin: false,
+  isSignin: false,
   password: null,
   username: null,
 };
@@ -26,13 +26,13 @@ const userSlice = createSlice({
         password: string;
       }>,
     ) => {
-      state.isLogin = true;
+      state.isSignin = true;
       state.avatar = action.payload.avatar;
       state.username = action.payload.username;
       state.password = action.payload.password;
     },
     logout: (state) => {
-      state.isLogin = false;
+      state.isSignin = false;
       state.avatar = null;
       state.username = null;
       state.password = null;

@@ -39,7 +39,7 @@ function SwitchThemeButton() {
     <div
       tabIndex={0}
       role="button"
-      className="theme-controller btn btn-circle btn-ghost cursor-pointer border-none"
+      className="theme-controller btn btn-circle btn-ghost"
       onClick={handleOnClick}
     >
       <IconComponent />

@@ -2,7 +2,7 @@ import { Scheme, Theme } from '@/config/themes';
 import {
   setAndGetTheme,
   switchTheme as switchThemeFunc,
-} from '@features/themeManager';
+} from '@features/theme/themeManager';
 import { createSlice } from '@reduxjs/toolkit';
 
 export interface themeState {

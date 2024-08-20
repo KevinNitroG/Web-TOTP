@@ -10,6 +10,7 @@
       "@components/*": ["src/components/*"],
       "@config/*": ["src/config/*"],
       "@features/*": ["src/features/*"],
+      "@layouts/*": ["src/layouts/*"],
       "@lib/*": ["src/lib/*"],
       "@pages/*": ["src/pages/*"],
       "@routes/*": ["src/routes/*"],
