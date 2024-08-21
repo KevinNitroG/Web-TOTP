@@ -1,4 +1,4 @@
-import TotpCard from '@/components/TotpCard';
+import TotpCard from '@components/TotpCard';
 
 function Vault() {
   return (

@@ -1,11 +1,11 @@
-import { useAppSelector } from '@/state/hook';
+import { useAppSelector } from '@state/hook';
 import { Link } from 'react-router-dom';
 
 function Home() {
   const isSignin: boolean = useAppSelector((state) => state.user.isSignin);
 
   return (
-    <div className="hero">
+    <div className="hero min-h-[70vh]">
       <div className="hero-content text-center">
         <div className="max-w-md">
           <h1 className="bg-gradient-to-br from-ctp-mauve to-ctp-lavender bg-clip-text text-5xl font-bold text-transparent dark:from-ctp-lavender dark:to-ctp-mauve">

@@ -1,9 +1,9 @@
-import { Theme } from '@/config/themes';
-import { useAppDispatch, useAppSelector } from '@/state/hook';
-import { setTheme, switchTheme } from '@/state/theme/themeSlice';
+import { Theme } from '@/types/theme';
 import BrightnessIcon from '@mui/icons-material/Brightness5Outlined';
 import DarkModeIcon from '@mui/icons-material/DarkModeOutlined';
 import LightModeIcon from '@mui/icons-material/LightModeOutlined';
+import { useAppDispatch, useAppSelector } from '@state/hook';
+import { setTheme, switchTheme } from '@state/theme/themeSlice';
 import { useEffect } from 'react';
 import { useMediaQuery } from 'usehooks-ts';
 

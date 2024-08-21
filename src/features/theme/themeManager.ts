@@ -1,4 +1,5 @@
-import { DARK_CLASS, LIGHT_CLASS, Scheme, Theme } from '@config/themes';
+import { Scheme, Theme } from '@/types/theme';
+import { DARK_CLASS, LIGHT_CLASS } from '@config/theme';
 
 function setTheme(scheme: Scheme) {
   if (scheme === 'dark') {

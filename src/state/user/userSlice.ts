@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export interface userState {
+export type userState = {
   avatar: string | File | null;
   isSignin: boolean;
   password: string | null;
   username: string | null;
-}
+};
 
 const initialState: userState = {
   avatar: null,

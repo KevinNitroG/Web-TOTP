@@ -1,8 +1,8 @@
-import Footer from '@/components/Footer';
-import Navbar from '@/components/Navbar';
+import Footer from '@components/Footer';
+import Navbar from '@components/Navbar';
 import { Outlet } from 'react-router';
 
-function Normal() {
+function Default() {
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
@@ -14,4 +14,4 @@ function Normal() {
   );
 }
 
-export default Normal;
+export default Default;

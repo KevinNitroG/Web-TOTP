@@ -9,7 +9,7 @@ type Props = {
 };
 
 function Avatar({ src = null, className, alt = 'avatar' }: Props) {
-  const mergedClass = twMerge('rounded-full', 'avatar', className);
+  const mergedClass = twMerge('avatar', className);
   let Avatar: React.ReactElement;
 
   if (src instanceof File) {

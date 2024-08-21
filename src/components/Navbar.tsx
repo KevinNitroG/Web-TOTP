@@ -1,6 +1,6 @@
-import Avatar from '@/components/Avatar';
-import SwitchThemeButton from '@/components/SwitchThemeButton';
-import { useAppSelector } from '@/state/hook';
+import Avatar from '@components/Avatar';
+import SwitchThemeButton from '@components/SwitchThemeButton';
+import { useAppSelector } from '@state/hook';
 import { Link } from 'react-router-dom';
 
 function Navbar() {
@@ -28,7 +28,7 @@ function Navbar() {
               role="button"
               className="avatar btn btn-circle btn-ghost border-none align-middle"
             >
-              <Avatar />
+              <Avatar className="rounded-full" />
             </div>
             <ul
               tabIndex={0}

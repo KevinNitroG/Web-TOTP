@@ -1,14 +1,14 @@
-import { Scheme, Theme } from '@/config/themes';
+import { Scheme, Theme } from '@/types/theme';
 import {
   setAndGetTheme,
   switchTheme as switchThemeFunc,
 } from '@features/theme/themeManager';
 import { createSlice } from '@reduxjs/toolkit';
 
-export interface themeState {
+export type themeState = {
   currentTheme: Theme;
   currentScheme: Scheme;
-}
+};
 
 const [initTheme, initScheme] = setAndGetTheme();
 

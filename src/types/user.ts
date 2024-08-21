@@ -1,4 +1,4 @@
-import { Vault } from '@utils/vaultType';
+import { Vault } from '@/types/vault';
 
 export type User = {
   username: string;

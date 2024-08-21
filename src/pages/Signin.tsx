@@ -1,4 +1,4 @@
-import { User } from '@/utils/userType';
+import { User } from '@utils/userType';
 
 function Login() {
   const users: User = JSON.parse(localStorage.getItem('users') || '{}');

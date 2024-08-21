@@ -1,9 +1,9 @@
-import EditIcon from '@mui/icons-material/Edit';
+import { VaultItem } from '@/types/vault';
+import TotpGenerator from '@features/totp/generator';
 import CopyIcon from '@mui/icons-material/ContentCopyOutlined';
+import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
 import { twJoin } from 'tailwind-merge';
-import TotpGenerator from '@/features/totp/generator';
-import { VaultItem } from '@/utils/vaultType';
 
 type Props = VaultItem;
 
