@@ -1,10 +1,10 @@
-import { Vault } from '@/types/vault';
+import type { Vault } from '@/types/vault';
 
 export type User = {
-  username: string;
-  password: string;
-  valt: Vault;
-  avatar: string;
+  username: string | null;
+  password: string | null;
+  vault: Vault | null;
+  avatar: string | null;
 };
 
 export type Users = User[];

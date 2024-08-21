@@ -2,7 +2,7 @@ import { useAppSelector } from '@state/hook';
 import { Link } from 'react-router-dom';
 
 function Home() {
-  const isSignin: boolean = useAppSelector((state) => state.user.isSignin);
+  const isSignin: boolean = useAppSelector((state) => state.user.isSignIn);
 
   return (
     <div className="hero min-h-[70vh]">

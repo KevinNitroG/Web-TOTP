@@ -1,4 +1,4 @@
-import { Theme } from '@/types/theme';
+import type { Theme } from '@/types/theme';
 import BrightnessIcon from '@mui/icons-material/Brightness5Outlined';
 import DarkModeIcon from '@mui/icons-material/DarkModeOutlined';
 import LightModeIcon from '@mui/icons-material/LightModeOutlined';

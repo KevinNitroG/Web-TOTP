@@ -1,4 +1,4 @@
-import { Scheme, Theme } from '@/types/theme';
+import type { Scheme, Theme } from '@/types/theme';
 import {
   setAndGetTheme,
   switchTheme as switchThemeFunc,
@@ -10,7 +10,7 @@ export type themeState = {
   currentScheme: Scheme;
 };
 
-const [initTheme, initScheme] = setAndGetTheme();
+const { theme: initTheme, scheme: initScheme } = setAndGetTheme();
 
 const initialState: themeState = {
   currentTheme: <Theme>initTheme,
@@ -22,12 +22,14 @@ const themeSlice = createSlice({
   initialState,
   reducers: {
     switchTheme: (state) => {
-      [state.currentTheme, state.currentScheme] = switchThemeFunc(
-        state.currentTheme,
-      );
+      const { theme, scheme } = switchThemeFunc(state.currentTheme);
+      state.currentTheme = theme;
+      state.currentScheme = scheme;
     },
     setTheme: (state) => {
-      [state.currentTheme, state.currentScheme] = setAndGetTheme();
+      const { theme, scheme } = setAndGetTheme();
+      state.currentTheme = theme;
+      state.currentScheme = scheme;
     },
   },
 });

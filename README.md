@@ -1,6 +1,6 @@
 # Web TOTP
 
-> [!NOTE]
+## References
 
 - Button group: https://www.hyperui.dev/components/application-ui/button-groups
 - Card: https://www.hyperui.dev/components/marketing/cards
@@ -14,3 +14,4 @@
 - https://dev.to/danhawkins/a-simple-theme-switcher-in-react-for-tailwind-css-1349
 - Animation Switch color: https://stackoverflow.com/a/75179455/23173098
 - Config alias: https://dev.to/tilly/aliasing-in-vite-w-typescript-1lfo
+- Encrypt Decrypt LocalStorage: https://dev.to/codecraftjs/encrypt-local-storage-in-the-browser-2441

@@ -1,7 +1,8 @@
 export type VaultItem = {
+  id: string;
+  issuer: string;
   name: string;
   secret: string;
-  issuer: string;
   simpleIcons: boolean;
 };
 

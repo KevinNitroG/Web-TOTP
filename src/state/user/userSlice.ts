@@ -1,53 +1,55 @@
+import { User } from '@/types/user';
+import type { VaultItem } from '@/types/vault';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type userState = {
-  avatar: string | File | null;
-  isSignin: boolean;
-  password: string | null;
-  username: string | null;
-};
+  isSignIn: boolean;
+} & User;
 
 const initialState: userState = {
   avatar: null,
-  isSignin: false,
+  isSignIn: false,
   password: null,
   username: null,
+  vault: null,
 };
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    login: (
-      state,
-      action: PayloadAction<{
-        avatar: string;
-        username: string;
-        password: string;
-      }>,
-    ) => {
-      state.isSignin = true;
+    login: (state, action: PayloadAction<userState>) => {
+      state.isSignIn = true;
       state.avatar = action.payload.avatar;
       state.username = action.payload.username;
       state.password = action.payload.password;
+      state.vault = action.payload.vault;
     },
     logout: (state) => {
-      state.isSignin = false;
+      state.isSignIn = false;
       state.avatar = null;
       state.username = null;
       state.password = null;
     },
     editProfile: (
       state,
-      action: PayloadAction<{
-        avatar: string | File | null;
-        username: string;
-        password: string;
-      }>,
+      action: PayloadAction<
+        Pick<userState, 'username' | 'password' | 'avatar'>
+      >,
     ) => {
       state.avatar = action.payload.avatar;
       state.username = action.payload.username;
       state.password = action.payload.password;
+    },
+    addVaultItem: (state, action: PayloadAction<VaultItem>) => {
+      state.vault?.push(action.payload);
+    },
+    removeVaultItem: (state, action: PayloadAction<VaultItem>) => {
+      state.vault = state.vault
+        ? state.vault.filter(
+            (vaultItem: VaultItem) => vaultItem.id !== action.payload.id,
+          )
+        : null;
     },
   },
 });

@@ -1,4 +1,4 @@
-import { Scheme, Theme } from '@/types/theme';
+import type { Scheme, Theme } from '@/types/theme';
 import { DARK_CLASS, LIGHT_CLASS } from '@config/theme';
 
 function setTheme(scheme: Scheme) {
@@ -32,14 +32,14 @@ function getScheme(theme: Theme): Scheme {
   }
 }
 
-function setAndGetTheme(): [Theme, Scheme] {
+function setAndGetTheme(): { theme: Theme; scheme: Scheme } {
   const theme: Theme = getTheme();
   const scheme: Scheme = getScheme(theme);
   setTheme(scheme);
-  return [theme, scheme];
+  return { theme, scheme };
 }
 
-function switchTheme(current: Theme): [Theme, Scheme] {
+function switchTheme(current: Theme): { theme: Theme; scheme: Scheme } {
   switch (current) {
     case 'light':
       localStorage.setItem('theme', 'dark');
