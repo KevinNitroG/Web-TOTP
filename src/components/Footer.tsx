@@ -3,7 +3,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 
 function Footer() {
   return (
-    <footer className="footer items-center bg-base-200 p-10 text-base-content">
+    <footer className="footer items-center bg-base-200 px-10 py-9 text-base-content md:px-24">
       <aside className="grid-flow-col items-center">
         <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
       </aside>

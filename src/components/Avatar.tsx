@@ -1,5 +1,5 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircleOutlined';
-import { memo } from 'react';
+import { memo, ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
 
 function Avatar({ src = null, className, alt = 'avatar' }: Props) {
   const mergedClass = twMerge('avatar', className);
-  let Avatar: React.ReactElement;
+  let Avatar: ReactNode;
 
   if (src instanceof File) {
     const fileURL = URL.createObjectURL(src);

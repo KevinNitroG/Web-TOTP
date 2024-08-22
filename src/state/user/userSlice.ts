@@ -1,9 +1,12 @@
-import { User } from '@/types/user';
-import type { VaultItem } from '@/types/vault';
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import type { User } from '@/types/user';
+import type { Vault, VaultItem } from '@/types/vault';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { EncryptStorage } from 'encrypt-storage';
 
 export type userState = {
   isSignIn: boolean;
+  vault: Vault | null;
+  encryptStorage: EncryptStorage | null;
 } & User;
 
 const initialState: userState = {
@@ -12,20 +15,21 @@ const initialState: userState = {
   password: null,
   username: null,
   vault: null,
+  encryptStorage: null,
 };
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    login: (state, action: PayloadAction<userState>) => {
+    signIn: (state, action: PayloadAction<userState>) => {
       state.isSignIn = true;
       state.avatar = action.payload.avatar;
       state.username = action.payload.username;
       state.password = action.payload.password;
       state.vault = action.payload.vault;
     },
-    logout: (state) => {
+    signOut: (state) => {
       state.isSignIn = false;
       state.avatar = null;
       state.username = null;
@@ -54,6 +58,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { login, logout, editProfile } = userSlice.actions;
+export const { signIn, signOut, editProfile } = userSlice.actions;
 
 export default userSlice.reducer;

@@ -4,16 +4,16 @@ import DarkModeIcon from '@mui/icons-material/DarkModeOutlined';
 import LightModeIcon from '@mui/icons-material/LightModeOutlined';
 import { useAppDispatch, useAppSelector } from '@state/hook';
 import { setTheme, switchTheme } from '@state/theme/themeSlice';
-import { useEffect } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { useMediaQuery } from 'usehooks-ts';
 
 function SwitchThemeButton() {
   const theme: Theme = useAppSelector((state) => state.theme.currentTheme);
   const dispatch = useAppDispatch();
-  const isPreferDarkScheme = useMediaQuery('(prefers-color-scheme: dark)');
 
   const handleOnClick = () => dispatch(switchTheme());
 
+  const isPreferDarkScheme = useMediaQuery('(prefers-color-scheme: dark)');
   /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     if (theme !== 'system') return;
@@ -21,17 +21,17 @@ function SwitchThemeButton() {
   }, [isPreferDarkScheme]);
   /* eslint-enable react-hooks/exhaustive-deps */
 
-  let IconComponent: React.ElementType;
+  let IconComponent: ReactNode;
 
   switch (theme) {
     case 'light':
-      IconComponent = LightModeIcon;
+      IconComponent = <LightModeIcon />;
       break;
     case 'dark':
-      IconComponent = DarkModeIcon;
+      IconComponent = <DarkModeIcon />;
       break;
     case 'system':
-      IconComponent = BrightnessIcon;
+      IconComponent = <BrightnessIcon />;
       break;
   }
 
@@ -42,7 +42,7 @@ function SwitchThemeButton() {
       className="theme-controller btn btn-circle btn-ghost"
       onClick={handleOnClick}
     >
-      <IconComponent />
+      {IconComponent}
     </div>
   );
 }

@@ -16,6 +16,7 @@
     "@mui/material": "^5.16.7",
     "@otplib/core-async": "^12.0.1",
     "@reduxjs/toolkit": "^2.2.7",
+    "encrypt-storage": "^2.13.3",
     "is-url": "^1.2.4",
     "otplib": "^12.0.1",
     "react": "^18.3.1",

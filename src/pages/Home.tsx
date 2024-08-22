@@ -2,7 +2,7 @@ import { useAppSelector } from '@state/hook';
 import { Link } from 'react-router-dom';
 
 function Home() {
-  const isSignin: boolean = useAppSelector((state) => state.user.isSignIn);
+  const isSignIn: boolean = useAppSelector((state) => state.user.isSignIn);
 
   return (
     <div className="hero min-h-[70vh]">
@@ -14,7 +14,7 @@ function Home() {
           <p className="py-6">A simple website generates TOTP</p>
           <Link
             className="btn btn-primary"
-            to={isSignin ? '/vault' : '/signin'}
+            to={isSignIn ? '/vault' : '/signin'}
           >
             Get Started
           </Link>

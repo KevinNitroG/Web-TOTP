@@ -4,7 +4,7 @@ import { useAppSelector } from '@state/hook';
 import { Link } from 'react-router-dom';
 
 function Navbar() {
-  const isSignin: boolean = useAppSelector((state) => state.user.isSignIn);
+  const isSignIn: boolean = useAppSelector((state) => state.user.isSignIn);
 
   return (
     <div className="navbar sticky top-0 z-30 bg-base-100 shadow backdrop-blur lg:p-5">
@@ -21,7 +21,7 @@ function Navbar() {
         >
           <SwitchThemeButton />
         </div>
-        {isSignin ? (
+        {isSignIn ? (
           <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
