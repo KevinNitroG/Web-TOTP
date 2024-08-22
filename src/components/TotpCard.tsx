@@ -5,9 +5,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
 import { twJoin } from 'tailwind-merge';
 
-type Props = VaultItem;
-
-function TotpCard({ name, secret, issuer, simpleIcons }: Props) {
+function TotpCard({ name, secret, issuer, simpleIcons }: VaultItem) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (

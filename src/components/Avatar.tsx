@@ -1,27 +1,24 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircleOutlined';
-import { memo, ReactNode } from 'react';
+import isUrl from 'is-url';
+import { ImgHTMLAttributes, memo, ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-type Props = {
-  src?: string | File | null;
-  className?: string;
-  alt?: string;
-};
-
-function Avatar({ src = null, className, alt = 'avatar' }: Props) {
-  const mergedClass = twMerge('avatar', className);
+function Avatar({
+  src,
+  className,
+  alt = 'avatar',
+  ...props
+}: ImgHTMLAttributes<HTMLImageElement>) {
+  const mergedClassName = twMerge('avatar', className);
   let Avatar: ReactNode;
 
-  if (src instanceof File) {
-    const fileURL = URL.createObjectURL(src);
-    Avatar = <img src={fileURL} alt={alt} />;
-  } else if (typeof src === 'string') {
-    Avatar = <img src={src} alt={alt} />;
+  if (typeof src === 'string' && isUrl(src)) {
+    Avatar = <img src={src} alt={alt} className={mergedClassName} {...props} />;
   } else {
-    Avatar = <AccountCircleIcon />;
+    Avatar = <AccountCircleIcon className={mergedClassName} />;
   }
 
-  return <div className={mergedClass}>{Avatar}</div>;
+  return <>{Avatar}</>;
 }
 
 export default memo(Avatar);

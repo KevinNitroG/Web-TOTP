@@ -1,7 +1,5 @@
-export type User = {
-  username: string | null;
-  password: string | null;
-  avatar: string | null;
+export type UserProfile = {
+  username: string;
+  password: string;
+  avatar: string;
 };
-
-export type Users = User[];

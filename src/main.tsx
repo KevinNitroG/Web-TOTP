@@ -8,10 +8,10 @@ import './styles/index.css';
 import store from '@state/store';
 
 import DefaultLayout from '@layouts/Default';
+import SigninPage from '@pages/Authentication/Signin';
+import SignupPage from '@pages/Authentication/Signup';
 import ErrorPage from '@pages/Error';
 import HomePage from '@pages/Home';
-import SigninPage from '@pages/Signin';
-import SignupPage from '@pages/Signup';
 import VaultPage from '@pages/Vault';
 
 const router = createBrowserRouter([

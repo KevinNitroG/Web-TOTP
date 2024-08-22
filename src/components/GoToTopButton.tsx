@@ -1,11 +1,11 @@
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpwardOutlined';
-import { HTMLAttributes, useEffect, useState } from 'react';
+import { ButtonHTMLAttributes, useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 function GoToTopButton({
   className,
   ...props
-}: HTMLAttributes<HTMLButtonElement>) {
+}: ButtonHTMLAttributes<HTMLButtonElement>) {
   const [showGoTop, setShowGoTop] = useState(false);
 
   const handleVisibleButton = () => {

@@ -1,6 +1,6 @@
 import GoToTopButton from '@/components/GoToTopButton';
-import Footer from '@components/Footer';
-import Navbar from '@components/Navbar';
+import Footer from '@layouts/components/Footer';
+import Navbar from '@layouts/components/Navbar';
 import { Outlet } from 'react-router';
 
 function Default() {
