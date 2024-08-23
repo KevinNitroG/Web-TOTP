@@ -18,10 +18,16 @@ class EncryptLocalStorage {
     });
   }
 
+  getProfile(): Profile {
+    return this.#profile;
+  }
+
+  encryptPassword(): string {
+    return this.#encrypter.encryptString(this.#profile.password);
+  }
+
   saveProfile(): void {
-    const encrypedPassword: string = this.#encrypter.encryptString(
-      this.#profile.password,
-    );
+    const encrypedPassword = this.encryptPassword();
     const encrypedProfile: Profile = {
       password: encrypedPassword,
       username: this.#profile.username,
@@ -36,17 +42,26 @@ class EncryptLocalStorage {
   saveVault(vault: Vault): void {
     this.#encrypter.setItem('vault', vault);
   }
+
+  getVault(): Vault | null {
+    return this.#encrypter.getItem('vault') || null;
+  }
 }
 
-function getEncryptedUserFromStorage(username: Profile['username']): Profile {
-  const profileString: string = localStorage.getItem(
+function getEncryptedUserProfileFromStorage(
+  username: Profile['username'],
+): Profile | null {
+  const profileString: string | null = localStorage.getItem(
     `web-totp:${username}:profile`,
-  )!;
+  );
+  if (!profileString) {
+    return null;
+  }
   const profile: Profile = JSON.parse(profileString);
   return profile;
 }
 
-function getEncryptedUsersFromStorage(): Profile[] {
+function getEncryptedUserProfilesFromStorage(): Profile[] {
   const keys: string[] = Object.keys(localStorage);
   const userKeys: string[] = keys.filter((key: string): string[] | null =>
     key.match(/web-totp:.*:profile/),
@@ -55,6 +70,8 @@ function getEncryptedUsersFromStorage(): Profile[] {
     (userKey: string): Profile => JSON.parse(localStorage.getItem(userKey)!),
   );
 }
+
+function getVaultFromProfile();
 
 // function getUserProfile({
 //   username,
@@ -71,6 +88,6 @@ function getEncryptedUsersFromStorage(): Profile[] {
 
 export {
   EncryptLocalStorage,
-  getEncryptedUserFromStorage,
-  getEncryptedUsersFromStorage
+  getEncryptedUserProfileFromStorage,
+  getEncryptedUserProfilesFromStorage
 };

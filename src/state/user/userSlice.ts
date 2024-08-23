@@ -1,12 +1,13 @@
+import { userStateSignIn } from '@/state/user/type';
 import type { UserProfile } from '@/types/user';
 import type { Vault, VaultItem } from '@/types/vault';
+import { EncryptLocalStorage } from '@/utils/localStorage';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import { EncryptStorage } from 'encrypt-storage';
 
 export type userState = {
   isSignIn: boolean;
   vault: Vault | null;
-  encryptStorage: EncryptStorage | null;
+  encryptStorage: EncryptLocalStorage | null;
   profile: UserProfile | null;
 };
 
@@ -21,10 +22,11 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    signIn: (state, action: PayloadAction<userState>) => {
+    signIn: (state, action: PayloadAction<userStateSignIn>) => {
       state.isSignIn = true;
       state.profile = action.payload.profile;
       state.vault = action.payload.vault;
+      state.encryptStorage = action.payload.encryptStorage;
     },
     signOut: (state) => {
       state.isSignIn = false;
