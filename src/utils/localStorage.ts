@@ -61,12 +61,17 @@ function getEncryptedUserProfileFromStorage(
   return profile;
 }
 
-function getEncryptedUserProfilesFromStorage(): Profile[] {
+function getUsernamesFromStorage(): string[] {
   const keys: string[] = Object.keys(localStorage);
-  const userKeys: string[] = keys.filter((key: string): string[] | null =>
+  const usernames: string[] = keys.filter((key: string): string[] | null =>
     key.match(/web-totp:.*:profile/),
   );
-  return userKeys.map(
+  return usernames;
+}
+
+function getEncryptedUserProfilesFromStorage(): Profile[] {
+  const usernames: string[] = getUsernamesFromStorage();
+  return usernames.map(
     (userKey: string): Profile => JSON.parse(localStorage.getItem(userKey)!),
   );
 }
@@ -87,5 +92,6 @@ function getEncryptedUserProfilesFromStorage(): Profile[] {
 export {
   EncryptLocalStorage,
   getEncryptedUserProfileFromStorage,
-  getEncryptedUserProfilesFromStorage
+  getEncryptedUserProfilesFromStorage,
+  getUsernamesFromStorage
 };

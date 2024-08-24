@@ -1,7 +1,7 @@
 import ToastContainer from '@/components/ToastContainer';
 import { Outlet } from 'react-router-dom';
 
-function Authentication() {
+function Focus() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-base-200">
       <Outlet />
@@ -10,4 +10,4 @@ function Authentication() {
   );
 }
 
-export default Authentication;
+export default Focus;

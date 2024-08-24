@@ -17,10 +17,10 @@ const schema = z.object({
 type FormFields = z.infer<typeof schema>;
 
 type SignInProps = {
-  username: UserProfile['username'];
+  encryptedProfile: UserProfile;
 };
 
-function SignIn({ username }: SignInProps) {
+function SignIn({ encryptedProfile: profile }: SignInProps) {
   const {
     register,
     handleSubmit,
@@ -32,7 +32,7 @@ function SignIn({ username }: SignInProps) {
   const onSubmit: SubmitHandler<FormFields> = (data: FormFields): void => {
     try {
       const user: userStateSignIn = authenticate({
-        username: username,
+        encrypedProfile: profile,
         password: data.password,
       });
       dispatch(signIn(user));
@@ -71,7 +71,7 @@ function SignIn({ username }: SignInProps) {
               (!isValid || isSubmitting) && 'btn-disabled',
             )}
           >
-            Login
+            Sign in
           </button>
         </div>
       </form>

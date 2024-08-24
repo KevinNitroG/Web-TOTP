@@ -8,8 +8,8 @@ import './styles/index.css';
 
 import store from '@state/store';
 
-import AuthLayout from '@layouts/Authentication';
 import DefaultLayout from '@layouts/Default';
+import FocusLayout from '@layouts/Focus';
 import Authentication from '@pages/Authentication';
 import ErrorPage from '@pages/Error';
 import HomePage from '@pages/Home';
@@ -37,7 +37,8 @@ const router = createBrowserRouter([
   },
   {
     path: '/auth',
-    element: <AuthLayout />,
+    element: <FocusLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/auth',
