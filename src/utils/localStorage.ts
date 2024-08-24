@@ -44,7 +44,7 @@ class EncryptLocalStorage {
   }
 
   getVault(): Vault | null {
-    return this.#encrypter.getItem('vault') || null;
+    return (this.#encrypter.getItem('vault') as Vault) || null;
   }
 }
 
@@ -70,8 +70,6 @@ function getEncryptedUserProfilesFromStorage(): Profile[] {
     (userKey: string): Profile => JSON.parse(localStorage.getItem(userKey)!),
   );
 }
-
-function getVaultFromProfile();
 
 // function getUserProfile({
 //   username,

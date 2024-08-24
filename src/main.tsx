@@ -2,14 +2,15 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
 
 import './styles/index.css';
 
 import store from '@state/store';
 
+import AuthLayout from '@layouts/Authentication';
 import DefaultLayout from '@layouts/Default';
-import SigninPage from '@pages/Authentication/Signin';
-import SignupPage from '@pages/Authentication/Signup';
+import Authentication from '@pages/Authentication';
 import ErrorPage from '@pages/Error';
 import HomePage from '@pages/Home';
 import VaultPage from '@pages/Vault';
@@ -35,12 +36,14 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: '/signin',
-    element: <SigninPage />,
-  },
-  {
-    path: '/signup',
-    element: <SignupPage />,
+    path: '/auth',
+    element: <AuthLayout />,
+    children: [
+      {
+        path: '/auth',
+        element: <Authentication />,
+      },
+    ],
   },
 ]);
 

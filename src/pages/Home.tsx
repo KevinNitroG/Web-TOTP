@@ -8,13 +8,13 @@ function Home() {
     <div className="hero min-h-[70vh]">
       <div className="hero-content text-center">
         <div className="max-w-md">
-          <h1 className="bg-gradient-to-br from-ctp-mauve to-ctp-lavender bg-clip-text text-5xl font-bold text-transparent dark:from-ctp-lavender dark:to-ctp-mauve">
+          <h1 className="animate-text-gradient bg-gradient-to-br from-ctp-mauve to-ctp-lavender bg-clip-text text-5xl font-bold text-transparent dark:from-ctp-lavender dark:to-ctp-mauve">
             WEB TOTP
           </h1>
           <p className="py-6">A simple website generates TOTP</p>
           <Link
             className="btn btn-primary"
-            to={isSignIn ? '/vault' : '/signin'}
+            to={isSignIn ? '/vault' : '/auth'}
           >
             Get Started
           </Link>

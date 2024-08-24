@@ -6,7 +6,21 @@ import daisyui from 'daisyui';
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        'text-gradient': 'text-gradient-keyframes 5s ease infinite',
+      },
+      keyframes: {
+        'text-gradient-keyframes': {
+          '0%, 100%': {
+            'background-position': '0% 50%',
+          },
+          '50%': {
+            'background-position': '100% 50%',
+          },
+        },
+      },
+    },
   },
   plugins: [
     daisyui,

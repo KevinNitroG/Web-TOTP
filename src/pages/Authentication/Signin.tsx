@@ -1,10 +1,12 @@
 import { authenticate } from '@/pages/Authentication/utils';
+import { AppDispatch } from '@/state/store';
 import { userStateSignIn } from '@/state/user/type';
 import { signIn } from '@/state/user/userSlice';
 import type { UserProfile } from '@/types/user';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useAppDispatch } from '@state/hook';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import { twJoin } from 'tailwind-merge';
 import { z } from 'zod';
 
@@ -14,17 +16,20 @@ const schema = z.object({
 
 type FormFields = z.infer<typeof schema>;
 
-function Login(username: UserProfile['username']) {
+type SignInProps = {
+  username: UserProfile['username'];
+};
+
+function SignIn({ username }: SignInProps) {
   const {
     register,
     handleSubmit,
-    setError,
     formState: { isValid, errors, isSubmitting },
   } = useForm<FormFields>({ resolver: zodResolver(schema) });
 
-  const dispatch = useAppDispatch();
+  const dispatch: AppDispatch = useAppDispatch();
 
-  const onSubmit: SubmitHandler<FormFields> = (data) => {
+  const onSubmit: SubmitHandler<FormFields> = (data: FormFields): void => {
     try {
       const user: userStateSignIn = authenticate({
         username: username,
@@ -33,12 +38,9 @@ function Login(username: UserProfile['username']) {
       dispatch(signIn(user));
     } catch (error) {
       if (error instanceof Error) {
-        setError('root', {
-          message: error.message,
-        });
-      } else {
-        console.error(error);
+        toast(error.message, { type: 'error' });
       }
+      console.error(error);
     }
   };
 
@@ -61,9 +63,6 @@ function Login(username: UserProfile['username']) {
             </div>
           )}{' '}
         </label>
-        {errors.root && (
-          <span className="p-2 pt-4 text-error">{errors.root.message}</span>
-        )}
         <div className="my-2 flex min-w-full justify-end">
           <button
             type="submit"
@@ -80,4 +79,4 @@ function Login(username: UserProfile['username']) {
   );
 }
 
-export default Login;
+export default SignIn;

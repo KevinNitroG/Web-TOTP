@@ -1,3 +1,4 @@
+import { AppDispatch } from '@/state/store';
 import type { Theme } from '@/types/theme';
 import BrightnessIcon from '@mui/icons-material/Brightness5Outlined';
 import DarkModeIcon from '@mui/icons-material/DarkModeOutlined';
@@ -9,13 +10,17 @@ import { useMediaQuery } from 'usehooks-ts';
 
 function SwitchThemeButton() {
   const theme: Theme = useAppSelector((state) => state.theme.currentTheme);
-  const dispatch = useAppDispatch();
+  const dispatch: AppDispatch = useAppDispatch();
 
-  const handleOnClick = () => dispatch(switchTheme());
+  const handleOnClick = (): void => {
+    dispatch(switchTheme());
+  };
 
-  const isPreferDarkScheme = useMediaQuery('(prefers-color-scheme: dark)');
+  const isPreferDarkScheme: boolean = useMediaQuery(
+    '(prefers-color-scheme: dark)',
+  );
   /* eslint-disable react-hooks/exhaustive-deps */
-  useEffect(() => {
+  useEffect((): void => {
     if (theme !== 'system') return;
     dispatch(setTheme());
   }, [isPreferDarkScheme]);

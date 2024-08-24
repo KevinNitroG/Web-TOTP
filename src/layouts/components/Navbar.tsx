@@ -1,10 +1,13 @@
 import Avatar from '@components/Avatar';
 import SwitchThemeButton from '@components/SwitchThemeButton';
 import { useAppSelector } from '@state/hook';
+import type { RootState } from '@state/store';
 import { Link } from 'react-router-dom';
 
 function Navbar() {
-  const isSignIn: boolean = useAppSelector((state) => state.user.isSignIn);
+  const isSignIn: boolean = useAppSelector(
+    (state: RootState): boolean => state.user.isSignIn,
+  );
 
   return (
     <div className="navbar sticky top-0 z-30 bg-base-100 shadow backdrop-blur lg:p-5">
@@ -43,8 +46,8 @@ function Navbar() {
             </ul>
           </div>
         ) : (
-          <Link className="btn" to="/signin">
-            Login
+          <Link className="btn" to="/auth">
+            Sign in
           </Link>
         )}
       </div>
