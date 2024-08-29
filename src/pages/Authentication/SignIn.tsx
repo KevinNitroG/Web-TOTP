@@ -53,6 +53,8 @@ function SignIn({ encryptedProfile: profile }: SignInProps) {
             placeholder="Password"
             className="input input-bordered w-full max-w-xs"
             aria-invalid={errors.password ? 'true' : 'false'}
+            required
+            min="1"
             {...register('password')}
           />
           {errors.password && (

@@ -1,4 +1,4 @@
-import Avatar from '@/components/Avatar';
+import Avatar from '@components/Avatar';
 import { UserProfile } from '@/types/user';
 import PlusIcon from '@mui/icons-material/ControlPointOutlined';
 import { MouseEventHandler } from 'react';

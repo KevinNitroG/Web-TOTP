@@ -2,6 +2,7 @@ import type { UserProfile as Profile } from '@/types/user';
 import type { Vault } from '@/types/vault';
 import { EncryptStorage } from 'encrypt-storage';
 
+// TODO: maybe we need to make it not to have profile property
 class EncryptLocalStorage {
   #encrypter: EncryptStorage;
   #profile: Profile;
@@ -9,7 +10,7 @@ class EncryptLocalStorage {
   constructor(profile: Profile) {
     this.#profile = {
       username: profile.username,
-      password: profile.password,
+      password: EncryptLocalStorage._makeSecretKeyBeValid(profile.password),
       avatar: profile.avatar,
     };
     this.#encrypter = new EncryptStorage(profile.password, {
@@ -45,6 +46,25 @@ class EncryptLocalStorage {
 
   getVault(): Vault | null {
     return (this.#encrypter.getItem('vault') as Vault) || null;
+  }
+
+  // TODO: Not done yet, it always returns undefined
+  static _makeSecretKeyBeValid(key: string): string {
+    const generator: () => () => string = (): (() => string) => {
+      let idx: number = 0;
+      return (): string => {
+        const char: string = key[key.length % idx];
+        idx++;
+        return char;
+      };
+    };
+
+    const extender: () => string = generator();
+
+    while (key.length < 10) {
+      key += extender();
+    }
+    return key;
   }
 }
 
